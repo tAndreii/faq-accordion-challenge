@@ -1,16 +1,17 @@
-console.log('Script works fine!')
+console.log('Script works fine!');
 
+const questions = document.querySelectorAll('details');
 
-let question = document.querySelector('.question');
+questions.forEach(question => {
+    
+    const toggler = question.querySelector('summary');
+    const icon = toggler.querySelector('.plus-minus-icon')
 
-let expand = () => {
-    let response = question.querySelector('.response')
-    let img = question.querySelector('img')
-    if (response.style.display === "none") {
-        response.style.display = "flex"
-        img.src = "./assets/images/icon-minus.svg"
-    } else {
-        response.style.display = "none"
-        img.src = "./assets/images/icon-plus.svg"
-    }
-};
+    toggler.addEventListener('click', () => {
+        if (toggler.parentElement.hasAttribute("open")) {
+            icon.src = "./assets/images/icon-plus.svg"
+        } else {
+            icon.src = "./assets/images/icon-minus.svg"
+        }
+    });
+});
